@@ -6,6 +6,7 @@ import {
 
 const initialStore = {
     data: [],
+    productsByCategory: [],
     isFetching: false,
     error: null
 }
@@ -24,7 +25,8 @@ export default (state = initialStore, action) => {
             return {
                 ...state,
                 isFetching: false,
-                data: action.payload.products
+                data: action.payload.products,
+                productsByCategory: action.payload.productsByCategory
             };
         case FETCH_DATA_FAILURE:
             return {

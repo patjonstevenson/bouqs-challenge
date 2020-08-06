@@ -16,7 +16,7 @@ export const getProductsFromData = data =>
 
 const getProductsByCategory = (acc, curr) => ({
     ...acc,
-    [curr.name]: curr.products
+    [curr.slug]: curr.products
 });
 
 export const getProductsByCategoryFromData = data =>

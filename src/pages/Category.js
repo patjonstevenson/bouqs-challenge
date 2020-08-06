@@ -1,10 +1,17 @@
 import React from "react";
-import { ProductInList as Product } from "../components/Product";
+// import { ProductInList as Product } from "../components/Product";
+import createProductList from "../components/ProductList/Container";
+import Header from "../components/Header";
 
-export default ({ match }) => {
-    const { name } = match.params;
-    
-
+export default ({ props }) => {
+    console.log("PROPS in CATEGORY: ", props);
+    const { name } = props.match.params;
+    const ProductList = createProductList(name)
+    return (
+        <div className="category-page">
+            <ProductList />
+        </div>
+    );
 }
 
 
