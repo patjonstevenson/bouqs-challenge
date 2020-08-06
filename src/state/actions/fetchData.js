@@ -11,9 +11,11 @@ export default () => async dispatch => {
     console.log("INSIDE FETCHDATA");
     dispatch({ type: FETCH_DATA_START });
     try {
-        const { data } = await axios.get(`${BASE_URL}/categories`);
-        const products = getProductsFromData(data);
-        const categories = getCategoriesFromData(data);
+        console.log("RUNNING AXIOS.GET...");
+        const data = await axios.get(`${BASE_URL}/categories`);
+        // TODO: TESTING THIS BELOW
+        const products = getProductsFromData(data.data);
+        const categories = getCategoriesFromData(data.data);
         dispatch({ type: FETCH_DATA_SUCCESS, payload: { products, categories } });
     } catch (error) {
         dispatch({ type: FETCH_DATA_FAILURE, payload: error });
