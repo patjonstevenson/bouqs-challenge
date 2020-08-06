@@ -1,12 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import { Route } from 'react-router-dom';
+
+import './App.css';
+
+import Dashboard from "./pages/Dashboard";
+import Cart from "./pages/Cart";
+
 
 function App() {
   return (
     <div className="App">
-      <Route
+      <Route exact path="/" component={Dashboard} />
+      <Route path="/cart" component={Cart} />
     </div>
   );
 }
