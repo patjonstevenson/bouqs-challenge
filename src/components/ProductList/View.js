@@ -14,7 +14,7 @@ export default props => { // ({ products })
         <div className="product-list">
             {
                 props.products
-                    ? props.products.map(p => <ProductInList data={p} />)
+                    ? props.products.map(p => <ProductInList key={p.id} data={p} />)
                     : null
             }
         </div>
