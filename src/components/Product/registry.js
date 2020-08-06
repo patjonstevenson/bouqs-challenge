@@ -1,6 +1,3 @@
-// Import Constructor
-import assembler from "./assembler";
-
 // Import Action Functions
 import addToCart from "../../state/actions/addToCart";
 import deleteFromCart from "../../state/actions/deleteFromCart";
@@ -11,10 +8,15 @@ import ProductInListView from "./views/ProductInListView";
 import ProductInModalView from "./views/ProductInModalView";
 
 
-const ProductInCartConfig = {
-    view: ProductInCartView,
+export const ProductInCartConfig = {
+    View: ProductInCartView,
     actionFns: [deleteFromCart]
-}
-
-// Export Product Components (id => <></>)
-export const ProductInCart = assembler()
+};
+export const ProductInModalConfig = {
+    View: ProductInModalView,
+    actionFns: [addToCart]
+};
+export const ProductInListConfig = {
+    View: ProductInListView,
+    actionFns: [addToCart]
+};

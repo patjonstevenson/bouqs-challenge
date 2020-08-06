@@ -1,3 +1,5 @@
+import React from "react";
+
 export default data => {
     return (
         <div key={data.id} className="product-in-cart">

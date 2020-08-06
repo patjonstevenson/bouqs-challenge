@@ -1,9 +1,15 @@
-// Views
-import ProductInListView from "./views/ProductInListView";
-import ProductInCartView from "./views/ProductInCartView";
-import ProductInModalView from "./views/ProductInModalView";
+// Import Constructor
+import assembler from "./assembler";
 
-// Injectors
+import {
+    ProductInCartConfig,
+    ProductInListConfig,
+    ProductInModalConfig
+} from "./registry";
 
 
-export const ProductInList = data => <h3>ProductInList</h3>;
+// export const ProductInList = data => <h3>ProductInList</h3>;
+// Export Product Components (id => <></>)
+export const ProductInCart = assembler(ProductInCartConfig);
+export const ProductInList = assembler(ProductInListConfig);
+export const ProductInModal = assembler(ProductInModalConfig);

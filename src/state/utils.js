@@ -13,3 +13,11 @@ const getProductsFromCategory = (products, category) => ({
 
 export const getProductsFromData = data =>
     data.reduce(getProductsFromCategory, []);
+
+const getProductsByCategory = (acc, curr) => ({
+    ...acc,
+    [curr.name]: curr.products
+});
+
+export const getProductsByCategoryFromData = data =>
+    data.reduce(getProductsByCategory, {})
