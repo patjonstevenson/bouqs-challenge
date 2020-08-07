@@ -9,6 +9,7 @@ export default ({ props }) => {
     const ProductList = createProductList(name)
     return (
         <div className="category-page">
+            <Header />
             <ProductList />
         </div>
     );
