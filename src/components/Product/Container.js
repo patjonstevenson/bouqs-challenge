@@ -11,7 +11,11 @@ export default View => data => {
     //         console.log("PRODUCT in CONTAINER: ", product);
     //     }
     // }, [])
+    // const [ViewSelection, setViewSelection] = useState(View);
+    // console.log("Inside Product Container. View selected: ", ViewSelection);
 
 
-    return <View data={withLowestPriceVariant(data)} />
+    return () => <View data={withLowestPriceVariant(data)} /> //viewSelector={setViewSelection}
+    // viewSelector: setViewSelection
+    // };
 }

@@ -1,6 +1,9 @@
 import React from "react";
 
-export default data => {
+export default ({ data }) => {
+    console.log("In ProductInModalView! data: ", data);
+    const variantName = data.variant ? data.variant.name : null;
+    const image = data.images.find(i => i.name === variantName);
     return (
         <div key={data.id} className="product-in-modal">
             <img src={data.images.url} alt={data.image_alt_tags} />

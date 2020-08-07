@@ -14,6 +14,7 @@ import {
     ProductInListConfig,
     ProductInModalConfig
 } from "./registry";
+import ProductInModalView from "./views/ProductInModalView";
 
 
 // export const ProductInList = data => <h3>ProductInList</h3>;
@@ -24,3 +25,4 @@ export const ProductInCart = assembler(ProductInCartConfig);
 export const ProductInListConstructor = Container(ProductInListView)//assembler(ProductInListConfig);
 
 export const ProductInModal = assembler(ProductInModalConfig);
+export const ProductInModalConstructor = Container(ProductInModalView)//assembler(ProductInListConfig);
