@@ -1,6 +1,7 @@
 import React from "react";
+import CartQuantityUpdater from "../../Cart/CartQuantityUpdater";
 
-export default data => {
+export default ({ data }) => {
     return (
         <div key={data.id} className="product-in-cart">
             <img className="product-image-thumbnail" src={data.images.url} alt={data.image_alt_tags} />

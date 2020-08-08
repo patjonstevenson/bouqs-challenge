@@ -5,6 +5,9 @@ import {
     DELETE_FROM_CART_START,
     DELETE_FROM_CART_SUCCESS,
     DELETE_FROM_CART_FAILURE,
+    CHANGE_CART_QUANTITY_START,
+    CHANGE_CART_QUANTITY_SUCCESS,
+    CHANGE_CART_QUANTITY_FAILURE,
 } from "../actions/types";
 
 const initialStore = {
@@ -14,6 +17,9 @@ const initialStore = {
 }
 
 export default (state = initialStore, action) => {
+    console.log("cartReducer running...");
+    console.log("Action: ", action);
+    console.log("state: ", state);
     switch (action.type) {
         case ADD_TO_CART_START:
             return {
@@ -21,10 +27,30 @@ export default (state = initialStore, action) => {
                 isUpdating: true,
             }
         case ADD_TO_CART_SUCCESS:
-            return {
-                ...state,
-                isUpdating: false,
-                data: action.payload
+            if (state.data[action.payload]) {
+                return {
+                    ...state,
+                    isUpdating: false,
+                    data: {
+                        ...state.data,
+                        [action.payload]: {
+                            ...state.data[action.payload],
+                            quantity: state.data[action.payload] + 1
+                        }
+                    }
+                }
+            } else {
+                return {
+                    ...state,
+                    isUpdating: false,
+                    data: {
+                        ...state.data,
+                        [action.payload]: {
+
+                            quantity: 1
+                        }
+                    }
+                }
             }
         case ADD_TO_CART_FAILURE:
             return {
@@ -49,6 +75,31 @@ export default (state = initialStore, action) => {
                 isUpdating: false,
                 error: action.payload
             }
+
+        case CHANGE_CART_QUANTITY_START:
+            return {
+                ...state,
+                isUpdating: true
+            }
+        case CHANGE_CART_QUANTITY_SUCCESS:
+            return {
+                ...state,
+                isUpdating: false,
+                data: {
+                    [action.payload.id]: {
+                        ...state.data[action.payload.id],
+                        quantity: action.payload.quantity
+                    }
+                }
+            }
+        case CHANGE_CART_QUANTITY_FAILURE:
+            return {
+                ...state,
+                isUpdating: false,
+                error: action.payload
+            }
+
+
         default:
             return state;
     }

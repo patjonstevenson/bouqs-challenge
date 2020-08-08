@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithHeaders as axios } from "../../../requests";
+import AddToCartButtonConstructor from "../../AddToCartButton/Container";
 
 export default ({ data }) => {
     console.log("In ProductInModalView! data: ", data);
@@ -9,13 +10,16 @@ export default ({ data }) => {
     const src = imageURL ? `${imageURL.slice(0, imageURL.length)}?t=${Date.now()}` : null;
     console.log("src in ProductInModalView: ", src);
 
+    const AddToCartButton = AddToCartButtonConstructor(data.id)
+
     return (
         <div key={data.id} className="product-in-modal">
             {imageURL ? <img src={src} alt={data.image_alt_tags} /> : "LOADING IMAGE"}
             <div className="product-info-modal">
                 <h2>{data.name}</h2>
                 <p className="product-price">${Math.round(data.variant.prices.regular)}</p>
-                <button onClick={() => { console.log("Added to cart."); }}>Add to Cart</button>
+                <AddToCartButton />
+                {/* <button onClick={() => { console.log("Added to cart."); }}>Add to Cart</button> */}
                 <h4>Description</h4>
                 <p className="product-description">{data.description}</p>
                 <h4>Manufacturer</h4>
