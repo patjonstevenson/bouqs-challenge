@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import View from "./View";
+
 import fetchData from "../../state/actions/fetchData";
 
-export default name => {
+export default View => name => {
     // const categoryTo
 
     // const productSelector = categoryName => state => {
