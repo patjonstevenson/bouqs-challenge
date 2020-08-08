@@ -4,14 +4,14 @@ import { connect } from "react-redux";
 import View from "./View";
 import deleteFromCart from "../../state/actions/deleteFromCart";
 
-export default (data) => {
-    console.log("data in deleteFromCartButton Container: ", data);
+export default (id) => {
+    console.log("data in deleteFromCartButton Container: ", id);
 
     const mapStateToProps = state => {
         return ({
             // id: id,
             // product
-            id: data.variant.id
+            id
         });
     };
 

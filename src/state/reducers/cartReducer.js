@@ -67,7 +67,11 @@ export default (state = initialStore, action) => {
             return {
                 ...state,
                 isUpdating: false,
-                data: action.payload
+                data: Object.keys(state.data)
+                    .reduce((acc, curr) => curr === action.payload.id
+                        ? acc
+                        : { ...acc, [curr]: state.data[curr] }
+                        , {})
             }
         case DELETE_FROM_CART_FAILURE:
             return {

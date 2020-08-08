@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 export default ({ id, deleteFromCart }) => {
     const handleClick = e => {
+        console.log("ID before deleteFromCart is called in View: ", id);
         deleteFromCart(id);
 
     }
