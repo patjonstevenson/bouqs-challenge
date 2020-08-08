@@ -1,6 +1,6 @@
 import React from "react";
 // import { ProductInList as Product } from "../components/Product";
-import createProductList from "../components/ProductList/Container";
+import createProductList from "../components/ProductList/";
 import Header from "../components/Header";
 
 export default ({ props }) => {
