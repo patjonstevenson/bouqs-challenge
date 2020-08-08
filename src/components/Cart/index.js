@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { ProductInCartConstructor } from "../Product";
+import OrderSummary from "./OrderSummary";
 
 const mapStateToProps = state => {
     return ({
@@ -20,6 +21,7 @@ export default connect(mapStateToProps)(({ cart }) => {
                 })
                 : "Cart is empty!"
             }
+            <OrderSummary cart={cart} />
         </div>
     );
 })

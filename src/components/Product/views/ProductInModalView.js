@@ -4,7 +4,7 @@ import AddToCartButtonConstructor from "../../AddToCartButton/Container";
 
 export default ({ data }) => {
     console.log("In ProductInModalView! data: ", data);
-    const variantName = data.variant.name || null;
+    // const variantName = data.variant.name || null;
     // const imageURL = data.images ? data.images[0].url : null// data.images.find(i => i.option === variantName) || null;
     // So that we get different images from the same image generator link
     // const src = imageURL ? `${imageURL.slice(0, imageURL.length)}?t=${Date.now()}` : null;
