@@ -86,6 +86,7 @@ export default (state = initialStore, action) => {
                 ...state,
                 isUpdating: false,
                 data: {
+                    ...state.data,
                     [action.payload.id]: {
                         ...state.data[action.payload.id],
                         quantity: action.payload.quantity

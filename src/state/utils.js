@@ -8,7 +8,7 @@ export const getCategoriesFromData = data =>
 
 const getProductsFromCategory = (products, category) => ({
     ...products,
-    ...category.products
+    ...category.products.map(addImageSrc)
 });
 
 export const getProductsFromData = data =>
@@ -22,6 +22,7 @@ const addImageSrc = data => {
 
 const getProductsByCategoryReducer = (acc, curr) => ({
     ...acc,
+    // Added the map below to get the correct image src into the component
     [curr.slug]: curr.products.map(addImageSrc)//.map(p => ({ ...p, imageSrc: p.images[0].url }))
 });
 

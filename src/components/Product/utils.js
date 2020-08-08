@@ -13,7 +13,7 @@ const getLowestPriceVariant = variants => {
 
 // product object -> product object with variant instead of variants
 export const withLowestPriceVariant = data => {
-    console.log("DATA in withLowestPriceVariant: ", data ? data.variants : null);
+    console.log("DATA in withLowestPriceVariant: ", data ? data : null);
     return data ? ({ ...data, "variant": data.variants ? getLowestPriceVariant(data.variants) : null }) : null;
 
     // data

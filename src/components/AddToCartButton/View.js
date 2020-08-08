@@ -1,12 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default ({ data, addToCart }) => {
     const handleClick = e => {
-        addToCart(data);
+        addToCart({ ...data, id: data.variant.id });
+
     }
     return (
         <div className="add-to-cart">
-            <button onClick={handleClick}></button>
+            <Link to="/cart"><button onClick={handleClick}>Add to Cart</button></Link>
         </div>
     );
 }
