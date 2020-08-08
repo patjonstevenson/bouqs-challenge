@@ -11,7 +11,7 @@ import {
 } from "../actions/types";
 
 const initialStore = {
-    data: [],
+    data: {},
     isUpdating: false,
     error: null
 }
@@ -35,7 +35,7 @@ export default (state = initialStore, action) => {
                         ...state.data,
                         [action.payload]: {
                             ...state.data[action.payload],
-                            quantity: state.data[action.payload] + 1
+                            quantity: state.data[action.payload].quantity + 1
                         }
                     }
                 }
