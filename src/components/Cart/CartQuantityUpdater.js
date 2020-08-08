@@ -13,7 +13,7 @@ const Updater = ({ id, changeCartQuantity }) => {
     }
     return (
         <div className="cart-quantity-updater">
-            <input value={quantity} />
+            <input value={quantity} onChange={handleChanges} />
             <button onClick={handleSubmit} >Update Quantity</button>
         </div>
     )
