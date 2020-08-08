@@ -14,10 +14,16 @@ const getProductsFromCategory = (products, category) => ({
 export const getProductsFromData = data =>
     data.reduce(getProductsFromCategory, []);
 
-const getProductsByCategory = (acc, curr) => ({
+const addImageSrc = data => {
+    const imageURL = data.images ? data.images[0].url : null// data.images.find(i => i.option === variantName) || null;
+    const src = imageURL ? `${imageURL.slice(0, imageURL.length)}?t=${Date.now()}` : null;
+    return { ...data, imageSrc: src };
+}
+
+const getProductsByCategoryReducer = (acc, curr) => ({
     ...acc,
-    [curr.slug]: curr.products
+    [curr.slug]: curr.products.map(addImageSrc)//.map(p => ({ ...p, imageSrc: p.images[0].url }))
 });
 
 export const getProductsByCategoryFromData = data =>
-    data.reduce(getProductsByCategory, {})
+    data.reduce(getProductsByCategoryReducer, {})

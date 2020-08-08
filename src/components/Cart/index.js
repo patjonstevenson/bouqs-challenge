@@ -15,7 +15,7 @@ export default connect(mapStateToProps)(({ cart }) => {
             <h2>Cart</h2>
             {cart
                 ? Object.keys(cart).map(p => {
-                    const Product = ProductInCartConstructor(p);
+                    const Product = ProductInCartConstructor(cart[p]);
                     return <Product />
                 })
                 : "Cart is empty!"

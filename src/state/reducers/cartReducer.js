@@ -27,15 +27,15 @@ export default (state = initialStore, action) => {
                 isUpdating: true,
             }
         case ADD_TO_CART_SUCCESS:
-            if (state.data[action.payload]) {
+            if (state.data[action.payload.id]) {
                 return {
                     ...state,
                     isUpdating: false,
                     data: {
                         ...state.data,
-                        [action.payload]: {
-                            ...state.data[action.payload],
-                            quantity: state.data[action.payload].quantity + 1
+                        [action.payload.id]: {
+                            ...state.data[action.payload.id],
+                            quantity: state.data[action.payload.id].quantity + 1
                         }
                     }
                 }
@@ -45,8 +45,8 @@ export default (state = initialStore, action) => {
                     isUpdating: false,
                     data: {
                         ...state.data,
-                        [action.payload]: {
-
+                        [action.payload.id]: {
+                            ...action.payload.product,
                             quantity: 1
                         }
                     }

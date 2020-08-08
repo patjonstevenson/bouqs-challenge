@@ -1,8 +1,8 @@
 import React from "react";
 
-export default ({ id, addToCart }) => {
+export default ({ data, addToCart }) => {
     const handleClick = e => {
-        addToCart(id);
+        addToCart(data);
     }
     return (
         <div className="add-to-cart">
