@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import { axiosWithHeaders as axios } from "../../../requests";
 import AddToCartButtonConstructor from "../../AddToCartButton/Container";
 
-export default ({ data }) => {
+export default ({ data, fns }) => {// ({ data }, closeModal) => {
+    // const { closeModal, ...data } = props.data;
+    // console.log("In ProductInModalView! props: ", props);
     console.log("In ProductInModalView! data: ", data);
+    const [closeModal] = fns;
+    console.log("In ProductInModalView! fns: ", fns);
     // const variantName = data.variant.name || null;
     // const imageURL = data.images ? data.images[0].url : null// data.images.find(i => i.option === variantName) || null;
     // So that we get different images from the same image generator link
     // const src = imageURL ? `${imageURL.slice(0, imageURL.length)}?t=${Date.now()}` : null;
-    console.log("data.src in ProductInModalView: ", data.src);
+    console.log("In ProductInModalView! data.src: ", data.src);
 
     const AddToCartButton = AddToCartButtonConstructor(data)
 
@@ -16,6 +20,7 @@ export default ({ data }) => {
         <div key={data.id} className="product-in-modal">
             {data.imageSrc ? <img src={data.imageSrc} alt={data.image_alt_tags} /> : "LOADING IMAGE"}
             <div className="product-info-modal">
+                <button onClick={closeModal}>X</button>
                 <h2>{data.name}</h2>
                 <p className="product-price">${Math.round(data.variant.prices.regular)}</p>
                 <AddToCartButton />

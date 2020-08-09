@@ -13,12 +13,19 @@ export default props => { // ({ products })
     //     console.log("props after fetch in ProductList container: ", props);
     // }, [props.products]);
 
-    const [productModal, setProductModal] = useState();
+    const [productModal, setProductModal] = useState(null);
 
     const handleClick = p => e => {
         console.log("Clicked on ", p);
         setProductModal(p.id);
     }
+
+    function closeModal() {
+        console.log("Closing Modal!");
+        setProductModal(null);
+    }
+
+    console.log("CloseModal: ", closeModal);
 
     return (
         <div className="product-list">
@@ -27,11 +34,12 @@ export default props => { // ({ products })
                     ? props.products.map(p => {
                         const ProductInList = ProductInListConstructor(p);
                         const ProductInListComponent = p => <div onClick={handleClick(p)}><ProductInList /></div>
-                        const ProductInModalComponent = ProductInModalConstructor(p);
+                        const ProductInModalComponent = ProductInModalConstructor(p, [closeModal]);
                         console.log(p);
                         console.log("productModal: ", productModal);
-                        return p
-                            ? p.id === productModal ? ProductInModalComponent(p) : ProductInListComponent(p)
+                        console.log("closeModal in map: ", closeModal);
+                        return p.id
+                            ? p.id === productModal ? ProductInModalComponent() : ProductInListComponent(p)
                             : null
                     })
                     : null
