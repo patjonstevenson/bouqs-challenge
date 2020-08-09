@@ -86,7 +86,9 @@ export default (state = initialStore, action) => {
                 isUpdating: true
             }
         case CHANGE_CART_QUANTITY_SUCCESS:
-            return {
+
+            return { //action.payload.quantity > 0
+                //? {
                 ...state,
                 isUpdating: false,
                 data: {
@@ -96,7 +98,16 @@ export default (state = initialStore, action) => {
                         quantity: action.payload.quantity
                     }
                 }
-            }
+            } //: {
+        //     ...state,
+        //     isUpdating: false,
+        //     data: Object.keys(state.data)
+        //         .reduce((acc, curr) => curr === action.payload.id
+        //             ? acc
+        //             : { ...acc, [curr]: state.data[curr] }
+        //             , {})
+        // }
+
         case CHANGE_CART_QUANTITY_FAILURE:
             return {
                 ...state,
