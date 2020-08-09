@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { Route } from 'react-router-dom';
+import { connect } from "react-redux";
+
 import './App.css';
 
-function App() {
+import Dashboard from "./pages/Dashboard";
+import Cart from "./pages/Cart";
+import Category from "./pages/Category";
+
+import fetchData from "./state/actions/fetchData";
+
+
+function App(props) {
+
+  useEffect(() => {
+    if (!props.hasData) {
+      props.fetchData();
+    }
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route exact path="/" component={Dashboard} />
+      <Route path="/cart" component={Cart} />
+      <Route
+        path="/category/:slug"
+        render={props => <Category props={props} />}
+      />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return ({
+    hasData: Boolean(state.products.data.length)
+  })
+}
+
+export default connect(mapStateToProps, { fetchData })(App);

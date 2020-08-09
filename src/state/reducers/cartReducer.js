@@ -5,15 +5,21 @@ import {
     DELETE_FROM_CART_START,
     DELETE_FROM_CART_SUCCESS,
     DELETE_FROM_CART_FAILURE,
+    CHANGE_CART_QUANTITY_START,
+    CHANGE_CART_QUANTITY_SUCCESS,
+    CHANGE_CART_QUANTITY_FAILURE,
 } from "../actions/types";
 
 const initialStore = {
-    data: [],
+    data: {},
     isUpdating: false,
     error: null
 }
 
 export default (state = initialStore, action) => {
+    console.log("cartReducer running...");
+    console.log("Action: ", action);
+    console.log("state: ", state);
     switch (action.type) {
         case ADD_TO_CART_START:
             return {
@@ -21,10 +27,30 @@ export default (state = initialStore, action) => {
                 isUpdating: true,
             }
         case ADD_TO_CART_SUCCESS:
-            return {
-                ...state,
-                isUpdating: false,
-                data: action.payload
+            if (state.data[action.payload.id]) {
+                return {
+                    ...state,
+                    isUpdating: false,
+                    data: {
+                        ...state.data,
+                        [action.payload.id]: {
+                            ...state.data[action.payload.id],
+                            quantity: state.data[action.payload.id].quantity + 1
+                        }
+                    }
+                }
+            } else {
+                return {
+                    ...state,
+                    isUpdating: false,
+                    data: {
+                        ...state.data,
+                        [action.payload.id]: {
+                            ...action.payload.product,
+                            quantity: 1
+                        }
+                    }
+                }
             }
         case ADD_TO_CART_FAILURE:
             return {
@@ -41,7 +67,11 @@ export default (state = initialStore, action) => {
             return {
                 ...state,
                 isUpdating: false,
-                data: action.payload
+                data: Object.keys(state.data)
+                    .reduce((acc, curr) => curr === action.payload.id
+                        ? acc
+                        : { ...acc, [curr]: state.data[curr] }
+                        , {})
             }
         case DELETE_FROM_CART_FAILURE:
             return {
@@ -49,6 +79,43 @@ export default (state = initialStore, action) => {
                 isUpdating: false,
                 error: action.payload
             }
+
+        case CHANGE_CART_QUANTITY_START:
+            return {
+                ...state,
+                isUpdating: true
+            }
+        case CHANGE_CART_QUANTITY_SUCCESS:
+
+            return { //action.payload.quantity > 0
+                //? {
+                ...state,
+                isUpdating: false,
+                data: {
+                    ...state.data,
+                    [action.payload.id]: {
+                        ...state.data[action.payload.id],
+                        quantity: action.payload.quantity
+                    }
+                }
+            } //: {
+        //     ...state,
+        //     isUpdating: false,
+        //     data: Object.keys(state.data)
+        //         .reduce((acc, curr) => curr === action.payload.id
+        //             ? acc
+        //             : { ...acc, [curr]: state.data[curr] }
+        //             , {})
+        // }
+
+        case CHANGE_CART_QUANTITY_FAILURE:
+            return {
+                ...state,
+                isUpdating: false,
+                error: action.payload
+            }
+
+
         default:
             return state;
     }
