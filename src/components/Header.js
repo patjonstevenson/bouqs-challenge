@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 export default () => {
     return (
         <div className="header">
-            <Link to='/'><h3>The Bouqs Co.</h3></Link>
-            <Link to="/cart">Cart</Link>
+            <h3>The Bouqs Co.</h3>
+            <nav className="header-nav">
+                <Link to='/'>Home</Link>
+                <Link to="/cart">Cart</Link>
+            </nav>
         </div>
     )
 }
