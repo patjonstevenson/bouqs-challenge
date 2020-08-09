@@ -33,7 +33,7 @@ export default props => { // ({ products })
                 props.products && props.products.length
                     ? props.products.map(p => {
                         const ProductInList = ProductInListConstructor(p);
-                        const ProductInListComponent = p => <div onClick={handleClick(p)}><ProductInList /></div>
+                        const ProductInListComponent = p => <button className="product-in-list-button" onClick={handleClick(p)}><ProductInList /></button>
                         const ProductInModalComponent = ProductInModalConstructor(p, [closeModal]);
                         console.log(p);
                         console.log("productModal: ", productModal);

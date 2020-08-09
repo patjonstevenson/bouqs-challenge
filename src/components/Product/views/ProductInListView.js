@@ -13,7 +13,7 @@ export default ({ data }) => {
     return dataLoaded
         ? (
             <div onClick={handleClick} key={data.id} className="product-in-list">
-                {/* <img src={data.images.url} alt={data.image_alt_tags} /> */}
+                <img src={data.images[0].url} alt={data.image_alt_tags} />
                 <h3>{data.name}</h3>
                 <p>${Math.round(data.variant.prices.regular)}</p>
             </div>

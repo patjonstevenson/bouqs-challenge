@@ -43,6 +43,12 @@ a {
   /* font-weight: bold; */
 }
 
+.product-in-list-button {
+  background: white;
+  border: none;
+  width: 30%;
+}
+
 .product-in-modal {
   z-index: 1;
   width: 100%;
