@@ -32,8 +32,11 @@ const Updater = props => { //({ id, changeCartQuantity })
     return (
         <div className="cart-quantity-updater">
             <div className="cart-quantity-updater-input">
-                <input value={quantity} onChange={handleChanges} />
-                <button onClick={handleSubmit} >Update Quantity</button>
+                <form onSubmit={handleSubmit}>
+                    <input type="number" min="0" value={quantity} onChange={handleChanges} />
+                    <button type="submit"  >Update Quantity</button>
+                </form>
+
             </div>
             <div className="error">
                 <p>{error}</p>
