@@ -3,6 +3,7 @@ import React from "react";
 import createProductList from "../components/ProductList/";
 import Header from "../components/Header";
 import { connect } from "react-redux";
+import BackButton from "../components/BackButton";
 
 const CategoryPageView = (props) => {
     console.log("PROPS in CATEGORY: ", props);
@@ -14,6 +15,7 @@ const CategoryPageView = (props) => {
     return (
         <div className="category-page">
             <Header />
+            <BackButton path="/" />
             <h2>{name}</h2>
             <ProductList />
         </div>

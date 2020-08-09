@@ -49,6 +49,26 @@ a {
   width: 30%;
 }
 
+@media screen and (max-width:500px) {
+  .product-in-list-button {
+    width: 100%;
+  }
+  .product-in-list img {
+    width: 100%;
+  }
+
+  .product-in-cart {
+    width: 100%;
+  }
+
+  .product-in-cart img {
+    width: 100%;
+  }
+
+}
+
+
+
 .product-in-modal {
   z-index: 1;
   width: 100%;
