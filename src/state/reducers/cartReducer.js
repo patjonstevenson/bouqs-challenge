@@ -17,9 +17,6 @@ const initialStore = {
 }
 
 export default (state = initialStore, action) => {
-    console.log("cartReducer running...");
-    console.log("Action: ", action);
-    console.log("state: ", state);
     switch (action.type) {
         case ADD_TO_CART_START:
             return {
@@ -79,7 +76,6 @@ export default (state = initialStore, action) => {
                 isUpdating: false,
                 error: action.payload
             }
-
         case CHANGE_CART_QUANTITY_START:
             return {
                 ...state,
@@ -87,8 +83,7 @@ export default (state = initialStore, action) => {
             }
         case CHANGE_CART_QUANTITY_SUCCESS:
 
-            return { //action.payload.quantity > 0
-                //? {
+            return {
                 ...state,
                 isUpdating: false,
                 data: {
@@ -98,24 +93,13 @@ export default (state = initialStore, action) => {
                         quantity: action.payload.quantity
                     }
                 }
-            } //: {
-        //     ...state,
-        //     isUpdating: false,
-        //     data: Object.keys(state.data)
-        //         .reduce((acc, curr) => curr === action.payload.id
-        //             ? acc
-        //             : { ...acc, [curr]: state.data[curr] }
-        //             , {})
-        // }
-
+            }
         case CHANGE_CART_QUANTITY_FAILURE:
             return {
                 ...state,
                 isUpdating: false,
                 error: action.payload
             }
-
-
         default:
             return state;
     }

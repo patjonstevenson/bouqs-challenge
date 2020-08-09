@@ -3,7 +3,6 @@ import {
     DELETE_FROM_CART_SUCCESS,
     DELETE_FROM_CART_FAILURE,
 } from "./types";
-import { ProductInCart } from "../../components/Product";
 
 export default id => dispatch => {
     dispatch({ type: DELETE_FROM_CART_START });

@@ -10,7 +10,6 @@ const mapStateToProps = state => {
     });
 }
 export default connect(mapStateToProps)(({ cart }) => {
-    console.log("Cart in Cart Component: ", cart);
     return (
         <div className="cart-component">
             <h2>Cart</h2>

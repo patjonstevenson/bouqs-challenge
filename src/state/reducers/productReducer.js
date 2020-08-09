@@ -12,9 +12,6 @@ const initialStore = {
 }
 
 export default (state = initialStore, action) => {
-    console.log("productReducer running.");
-    console.log("Action: ", action);
-    console.log("State: ", state);
     switch (action.type) {
         case FETCH_DATA_START:
             return {
