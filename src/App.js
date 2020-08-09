@@ -23,7 +23,7 @@ function App(props) {
       <Route exact path="/" component={Dashboard} />
       <Route path="/cart" component={Cart} />
       <Route
-        path="/category/:name"
+        path="/category/:slug"
         render={props => <Category props={props} />}
       />
     </div>

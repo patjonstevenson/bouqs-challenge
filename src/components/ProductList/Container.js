@@ -3,24 +3,13 @@ import { connect } from "react-redux";
 
 import fetchData from "../../state/actions/fetchData";
 
-export default View => name => {
-    // const categoryTo
-
-    // const productSelector = categoryName => state => {
-    //     return state.categories
-    //         .find(c => c.name === categoryName)
-    //         .products
-    //         .reduce((acc, curr) => [
-    //             ...acc,
-    //             state.products.find(p => p.id === curr.id)
-    //         ], [])
-    // }
+export default View => slug => {
     const mapStateToProps = state => {
-        console.log("Name in mapStateToProps: ", name);
+        console.log("Slug in mapStateToProps: ", slug);
         console.log("STATE in mapStateToProps in ProductList Container: ", state);
-        console.log("STATE.PRODUCTS.PRODUCTSBYCATEGORY[name] in mapStateToProps in ProductList Container: ", state.products.productsByCategory[name]);
+        console.log("STATE.PRODUCTS.PRODUCTSBYCATEGORY[slug] in mapStateToProps in ProductList Container: ", state.products.productsByCategory[slug]);
         return ({
-            products: state.products.productsByCategory[name]
+            products: state.products.productsByCategory[slug]
         });
     }
 
