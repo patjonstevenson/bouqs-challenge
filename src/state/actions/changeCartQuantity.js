@@ -5,9 +5,6 @@ import {
 } from "./types";
 
 export default (id, quantity) => dispatch => {
-    console.log("Running changeCartQuantity with");
-    console.log("id: ", id);
-    console.log("quantity: ", quantity);
     dispatch({ type: CHANGE_CART_QUANTITY_START });
     try {
         dispatch({ type: CHANGE_CART_QUANTITY_SUCCESS, payload: { id, quantity } });
