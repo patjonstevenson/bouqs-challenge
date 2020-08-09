@@ -9,7 +9,7 @@ export default ({ id, deleteFromCart }) => {
 
     }
     return (
-        <div className="add-to-cart">
+        <div className="delete-from-cart">
             <Link to="/cart"><button onClick={handleClick}>X</button></Link>
         </div>
     );

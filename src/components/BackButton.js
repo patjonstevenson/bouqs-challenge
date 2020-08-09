@@ -5,7 +5,7 @@ export default ({ path = null }) => {
     const history = useHistory();
     console.log("history: ", history);
     console.log("path: ", path);
-    
+
     const handleClick = e => {
         e.preventDefault();
         if (!path) {
@@ -17,5 +17,5 @@ export default ({ path = null }) => {
 
         console.log("history after push: ", history);
     }
-    return <button onClick={handleClick}>Back</button>
+    return <button className="back-button" onClick={handleClick}>Back</button>
 }
