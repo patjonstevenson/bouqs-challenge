@@ -13,6 +13,7 @@ export default ({ data }) => {
                 </div>
                 <div className="price-and-buttons">
                     <p>${Math.round(data.variant.prices.regular)}</p>
+                    <p>Qty: {data.quantity}</p>
                     <CartQuantityUpdater data={data} />
                     <DeleteFromCartButton />
                 </div>
