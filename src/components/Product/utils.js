@@ -1,5 +1,4 @@
 const getLowestPriceVariant = variants => {
-    console.log("IN GETLOWEST; !! typeof variants = ", typeof variants);
     const variant = variants.length
         ? variants.reduce((acc, curr) => {
             return curr.prices.regular < acc.prices.regular ? curr : acc
