@@ -1,3 +1,8 @@
+# The Bouqs Front-End Code Challenge
+To run the project, clone this repo, run npm install, and run npm run api:dev.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
