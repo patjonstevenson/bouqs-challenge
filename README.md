@@ -1,4 +1,4 @@
-# The Bouqs Front-End Code Challenge
+# Front-End Code Challenge
 To view the project, clone this repo, run `npm install`, and run `npm run api:dev`.
 
 
